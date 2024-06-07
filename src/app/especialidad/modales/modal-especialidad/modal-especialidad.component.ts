@@ -27,6 +27,11 @@ export class ModalEspecialidadComponent implements OnInit {
       descripcion: ['', Validators.required],
       estado: ['1', Validators.required],
     });
+
+    if (this.datosEspecialidad != null) {
+      this.titulo = 'Editar';
+      this.nombreBoton = 'Actualizar';
+    }
   }
 
   ngOnInit(): void {
@@ -63,7 +68,9 @@ export class ModalEspecialidadComponent implements OnInit {
               'Error'
             );
         },
-        error: (e) => {},
+        error: (e) => {
+          this._compartidoService.mostrarAlerta(e.error.errores, 'Error');
+        },
       });
     } else {
       //Editar
