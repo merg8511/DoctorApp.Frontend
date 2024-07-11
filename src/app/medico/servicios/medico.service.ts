@@ -3,13 +3,13 @@ import { enviroment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../../interfaces/api-response';
-import { Especialidad } from '../interfaces/especialidad';
+import { Medico } from '../interfaces/medico';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EspecialidadService {
-  baseUrl: string = enviroment.apiUrl + 'especialidad/';
+export class MedicoService {
+  baseUrl: string = enviroment.apiUrl + 'medico/';
 
   constructor(private http: HttpClient) {}
 
@@ -17,15 +17,11 @@ export class EspecialidadService {
     return this.http.get<ApiResponse>(`${this.baseUrl}`);
   }
 
-  listaActivos(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.baseUrl}listadoActivos`);
-  }
-
-  crear(request: Especialidad): Observable<ApiResponse> {
+  crear(request: Medico): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(`${this.baseUrl}`, request);
   }
 
-  editar(request: Especialidad): Observable<ApiResponse> {
+  editar(request: Medico): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(`${this.baseUrl}`, request);
   }
 
