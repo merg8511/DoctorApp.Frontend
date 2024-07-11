@@ -5,6 +5,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListadoEspecialidadComponent } from '../especialidad/pages/listado-especialidad/listado-especialidad.component';
 import {} from '../especialidad/especialidad.module';
+import {} from '../medico/medico.module';
+import { ListadoMedicoComponent } from '../medico/pages/listado-medico/listado-medico.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,11 @@ const routes: Routes = [
       {
         path: 'especialidades',
         component: ListadoEspecialidadComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'medicos',
+        component: ListadoMedicoComponent,
         pathMatch: 'full',
       },
       { path: '**', redirectTo: '', pathMatch: 'full' },
