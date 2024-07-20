@@ -47,7 +47,9 @@ export class ListadoMedicoComponent implements OnInit, AfterViewInit {
           );
         }
       },
-      error: (e) => {},
+      error: (e) => {
+        this._compartidoServicio.mostrarAlerta(e.error.mensaje, 'Error!');
+      },
     });
   }
 
@@ -99,6 +101,9 @@ export class ListadoMedicoComponent implements OnInit, AfterViewInit {
                 'Error'
               );
             }
+          },
+          error: (e) => {
+            this._compartidoServicio.mostrarAlerta(e.error.mensaje, 'Error!');
           },
         });
       }

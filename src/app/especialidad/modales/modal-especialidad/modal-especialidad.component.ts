@@ -69,7 +69,7 @@ export class ModalEspecialidadComponent implements OnInit {
             );
         },
         error: (e) => {
-          this._compartidoService.mostrarAlerta(e.error.errores, 'Error');
+          this._compartidoService.mostrarAlerta(e.error.mensaje, 'Error');
         },
       });
     } else {
@@ -88,7 +88,9 @@ export class ModalEspecialidadComponent implements OnInit {
               'Error'
             );
         },
-        error: (e) => {},
+        error: (e) => {
+          this._compartidoService.mostrarAlerta(e.error.mensaje, 'Error');
+        },
       });
     }
   }
