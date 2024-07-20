@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompartidoService } from '../compartido.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-layout',
@@ -12,18 +13,20 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private compartidoService: CompartidoService
+    private compartidoService: CompartidoService,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
-    const usuarioToken = this.compartidoService.obtenerSesion();
-    if (usuarioToken != null) {
-      this.username = usuarioToken.username;
+    const usuarioSession = this.compartidoService.obtenerSesion();
+    if (usuarioSession != null) {
+      this.username = usuarioSession;
     }
   }
 
   cerrarSesion() {
     this.compartidoService.eliminarSesion();
+    this.cookieService.delete('Authorization', '/');
     this.router.navigate(['login']);
   }
 }

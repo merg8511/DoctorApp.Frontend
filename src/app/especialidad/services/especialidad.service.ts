@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../../interfaces/api-response';
 import { Especialidad } from '../interfaces/especialidad';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { Especialidad } from '../interfaces/especialidad';
 export class EspecialidadService {
   baseUrl: string = enviroment.apiUrl + 'especialidad/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   lista(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${this.baseUrl}`);

@@ -66,7 +66,9 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit {
           );
         }
       },
-      error: (e) => {},
+      error: (e) => {
+        this._compartido.mostrarAlerta(e.error.mensaje, 'Error!');
+      },
     });
   }
 
@@ -97,7 +99,9 @@ export class ListadoEspecialidadComponent implements OnInit, AfterViewInit {
               );
             }
           },
-          error: (e) => {},
+          error: (e) => {
+            this._compartido.mostrarAlerta(e.error.mensaje, 'Error!');
+          },
         });
       }
     });
